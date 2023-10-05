@@ -20,17 +20,15 @@
                       <tr>
                         <th scope="col">User</th>
                         <th scope="col">Phone</th>
+                        <th scope="col">Phone</th>
                       </tr>
                     </thead>
                     <tbody>
-                        @foreach ($categories as $data)
+                        @foreach ($mechanics as $data)
                         <tr>
                           <th>{{ $data->name }}</th>
-                          <th>
-                            @foreach ($data->posts as $post)
-                            {{ $post->title }}                              
-                            @endforeach
-                          </th>
+                          <th>{{ $data->cars->model }}</th>
+                          <th>{{ $data->carOwners->name }}</th>
                         </tr>                            
                         @endforeach
                     </tbody>

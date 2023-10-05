@@ -6,6 +6,7 @@ use App\Models\Phone;
 use App\Models\Post;
 use App\Models\Comment;
 use App\Models\Category;
+use App\Models\Mechanic;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,5 +52,9 @@ Route::get('/', function () {
     $categories = Category::with('posts')->get();
     // return $posts;
 
-    return view('welcome',compact('categories'));
+    //HasManyTrough - HasOne to many relationships
+    $mechanics = Mechanic::with('carOwners')->get();
+    // return $mechanics;
+
+    return view('welcome',compact('mechanics'));
 });
