@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\Comment;
 use App\Models\Category;
 use App\Models\Mechanic;
+use App\Models\Country;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,9 +53,13 @@ Route::get('/', function () {
     $categories = Category::with('posts')->get();
     // return $posts;
 
-    //HasManyTrough - HasOne to many relationships
+    //HasOneTrough - HasOne to many relationships
     $mechanics = Mechanic::with('carOwners')->get();
     // return $mechanics;
 
-    return view('welcome',compact('mechanics'));
+    //HasManyTrough - HasMany to many relationships
+    $countries = Country::with('posts')->get();
+    // return $countries;
+
+    return view('welcome',compact('countries'));
 });

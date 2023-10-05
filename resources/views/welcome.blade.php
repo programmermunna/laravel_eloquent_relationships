@@ -18,17 +18,21 @@
                 <table class="table">
                     <thead>
                       <tr>
-                        <th scope="col">User</th>
-                        <th scope="col">Phone</th>
-                        <th scope="col">Phone</th>
+                        <th scope="col">Country</th>
+                        <th scope="col">Post</th>
+                        <th scope="col">Post Title</th>
                       </tr>
                     </thead>
                     <tbody>
-                        @foreach ($mechanics as $data)
+                        @foreach ($countries as $data)
                         <tr>
                           <th>{{ $data->name }}</th>
-                          <th>{{ $data->cars->model }}</th>
-                          <th>{{ $data->carOwners->name }}</th>
+                          <th>{{ $data->posts->count() }}</th>
+                          <th>
+                            @foreach ($data->posts as $post)
+                              {{ $post->title }}
+                            @endforeach
+                          </th>
                         </tr>                            
                         @endforeach
                     </tbody>
