@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Phone;
+use App\Models\Post;
+use App\Models\Comment;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +18,8 @@ use App\Models\Phone;
 */
 
 Route::get('/', function () {
+
+    //HasOne - One to One relationships
     $phone = User::find(3);
     $phone = User::find(3)->phone;
     // return $phone;
@@ -28,5 +32,18 @@ Route::get('/', function () {
     $users = User::all();
     // return $users;
 
-    return view('welcome',compact('users'));
+    //HasMany - One to Many relationships
+    $post = Post::find(1);
+    $post = Post::find(1)->comment;
+    // return $post;
+
+    $comment = Comment::find(1);
+    $comment = Comment::find(1)->post;
+    // return $comment;
+
+    $posts = Post::with('comments')->get();
+    $comments = Comment::all();
+    // return $posts;
+
+    return view('welcome',compact('posts'));
 });

@@ -23,10 +23,14 @@
                       </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $user)
+                        @foreach ($posts as $data)
                         <tr>
-                          <th>{{ $user->name }}</th>
-                          <th>{{ $user->phone->name }}</th>
+                          <th>{{ $data->title }}</th>
+                          <th>
+                            @foreach ($data->comments as $comment)
+                            <span style="padding:5px 10px;background:gray;color:#fff">{{ $comment->message }}</span>
+                            @endforeach
+                          </th>
                         </tr>                            
                         @endforeach
                     </tbody>
