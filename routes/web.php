@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Models\Phone;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,5 +46,10 @@ Route::get('/', function () {
     $comments = Comment::all();
     // return $posts;
 
-    return view('welcome',compact('posts'));
+    //ManyToMany - Many to Many relationships
+    $posts = Post::with('categories')->get();
+    $categories = Category::with('posts')->get();
+    // return $posts;
+
+    return view('welcome',compact('categories'));
 });

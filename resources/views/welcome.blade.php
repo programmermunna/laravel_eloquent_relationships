@@ -23,12 +23,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                        @foreach ($posts as $data)
+                        @foreach ($categories as $data)
                         <tr>
-                          <th>{{ $data->title }}</th>
+                          <th>{{ $data->name }}</th>
                           <th>
-                            @foreach ($data->comments as $comment)
-                            <span style="padding:5px 10px;background:gray;color:#fff">{{ $comment->message }}</span>
+                            @foreach ($data->posts as $post)
+                            {{ $post->title }}                              
                             @endforeach
                           </th>
                         </tr>                            
